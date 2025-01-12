@@ -1,11 +1,12 @@
 import { Project } from '../types/project';
+import {StockPulse} from '../assets/StockPulse.png'
 
 export const projects: Project[] = [
   {
     id: 'stockpulse',
     title: 'StockPulse - Inventory Management System',
     description: 'A fully functional inventory management system with the best user interface and easy navigation with darkmode. Built with React, TypeScript and TailwindCSS for more user friendly and fully responsive design and Supabase database.',
-    image: '../src/assets/StockPulse.png',
+    image: {StockPulse},
     tags: ['React', 'TailwindCSS', 'TypeScript' , 'Supabsase'],
     githubUrl: 'https://github.com/Abshee0/StockPulse',
     demoUrl: 'https://starlit-cascaron-8dd58d.netlify.app/'
