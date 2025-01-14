@@ -35,7 +35,7 @@ export const projects: Project[] = [
     image: '../src/assets/Pulseflow.png',
     tags: ['React', 'TailwindCSS'],
     githubUrl: 'https://github.com/Abshee0/PulseFlow.git',
-    demoUrl: '/'
+    demoUrl: 'https://pulseflow.netlify.app/'
   },
   
   
