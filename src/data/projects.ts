@@ -11,6 +11,15 @@ export const projects: Project[] = [
     demoUrl: 'https://starlit-cascaron-8dd58d.netlify.app/'
   },
   {
+    id: 'excel_editor',
+    title: 'Excel Editor - Excel file edtiting app',
+    description: 'An app focused on giving the best UI for your excel file even when using from your mobile device with a sleek dark mode. Built with React, TypeScript and TailwindCSS for more user friendly and fully responsive design.',
+    image: '../src/assets/Excel_Editor.png',
+    tags: ['React', 'TailwindCSS', 'TypeScript'],
+    githubUrl: 'https://github.com/Abshee0/Excel-Editor.git',
+    demoUrl: 'https://excelfile-editor.netlify.app/'
+  },
+  {
     id: 'medicallaboratory',
     title: 'Medical Laboratory Landing Page',
     description: 'A simple landing page for a medical laboratory. Built with modern React and TailwindCSS with sleek animations for more eye friendly and fully responsive design.',
