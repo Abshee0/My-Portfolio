@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { motion } from 'framer-motion';
 import { Mail, Instagram, Facebook, MessageSquare, Twitter, Phone } from 'lucide-react';
 
@@ -9,18 +10,49 @@ export default function ContactSection() {
     message: ''
   });
 
+  const [dialogVisible, setDialogVisible] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the email using a service like EmailJS or your backend
-    console.log('Form submitted:', formData);
+  
+    // Send the email using EmailJS
+    try {
+      const response = await emailjs.send(
+        'service_v3d1efd',       
+        'template_v7nuwsq',      // Replace with your EmailJS template ID
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        'jgh9cGUqAp8XuAQuI'          // Replace with your EmailJS user ID
+      );
+  
+      console.log('Email sent successfully:', response);
+      setDialogMessage('Your message has been sent! We will contact you in no time.');
+      // Reset the form or show a success message
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setDialogMessage('Please try again later.');
+      // Optionally, handle the error (e.g., show an error message)
+    }
+
+    setDialogVisible(true);
+    setFormData({ name: '', email: '', message: '' });
+
+  };
+
+  const closeDialog = () => {
+    setDialogVisible(false);
   };
 
   const socialLinks = [
-    { icon: <Mail className="w-6 h-6" />, href: 'mailto:your.email@example.com', label: 'Email' },
-    { icon: <Instagram className="w-6 h-6" />, href: 'https://instagram.com/yourusername', label: 'Instagram' },
-    { icon: <Facebook className="w-6 h-6" />, href: 'https://facebook.com/yourusername', label: 'Facebook' },
-    { icon: <Twitter className="w-6 h-6" />, href: 'https://twitter.com/yourusername', label: 'X (Twitter)' },
-    { icon: <Phone className="w-6 h-6" />, href: 'https://wa.me/yournumber', label: 'WhatsApp' },
+    { icon: <Mail className="w-6 h-6" />, href: 'mailto:abshee3280@gmail.com', label: 'Email' },
+    { icon: <Instagram className="w-6 h-6" />, href: 'https://instagram.com/_abshee._', label: 'Instagram' },
+    { icon: <Facebook className="w-6 h-6" />, href: 'https://facebook.com/Absheee', label: 'Facebook' },
+    { icon: <Twitter className="w-6 h-6" />, href: 'https://twitter.com/abdhul_rasheedh', label: 'X (Twitter)' },
+    { icon: <Phone className="w-6 h-6" />, href: 'https://wa.me/7226953', label: 'WhatsApp' },
   ];
 
   return (
@@ -131,6 +163,31 @@ export default function ContactSection() {
           </motion.div>
         </div>
       </div>
+
+      {/* Dialog Box */}
+      {dialogVisible && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="bg-purple-900/10 backdrop-blur-lg rounded-2xl p-8"
+        >
+          
+          <div className="p-6 w-80">
+            <h3 className="text-lg font-semibold text-white text-center mb-4">{dialogMessage}</h3>
+            <button
+              onClick={closeDialog}
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded-lg transition-colors duration-300"
+            >
+              Thank you
+            </button>
+          </div>
+        
+        </motion.div>
+        </div>
+      )}
     </section>
   );
 }
