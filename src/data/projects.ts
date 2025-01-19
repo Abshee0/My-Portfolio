@@ -8,7 +8,7 @@ export const projects: Project[] = [
     image: '../src/assets/StockPulse.png',
     tags: ['React', 'TailwindCSS', 'TypeScript' , 'Supabsase'],
     githubUrl: 'https://github.com/Abshee0/StockPulse',
-    demoUrl: 'https://starlit-cascaron-8dd58d.netlify.app/'
+    demoUrl: 'https://astockpulse.netlify.app/'
   },
   {
     id: 'excel_editor',
